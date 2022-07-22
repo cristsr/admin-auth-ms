@@ -4,8 +4,9 @@ import { AppController } from './app.controller';
 import { validate } from 'environment';
 import { DatabaseModule } from 'database';
 import { AuthModule } from 'auth/auth.module';
-import { APP_FILTER } from '@nestjs/core';
+import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { TypeormFilter } from './core/filters';
+import { RequestInterceptor } from './core/interceptors';
 
 @Module({
   imports: [
@@ -21,6 +22,10 @@ import { TypeormFilter } from './core/filters';
     {
       provide: APP_FILTER,
       useClass: TypeormFilter,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: RequestInterceptor,
     },
   ],
 })
