@@ -20,6 +20,8 @@
     "paths": {
       "environment": ["./src/environment"],
       "database": ["./src/database"],
+      "auth/*": ["./src/auth/*"],
+      "strategy/*": ["./src/strategy/*"],
     }
   }
 }
